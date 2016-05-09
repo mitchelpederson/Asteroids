@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Asteroid.cpp" />
+    <ClCompile Include="AsteroidManager.cpp" />
+    <ClCompile Include="AsteroidsGame.cpp" />
+    <ClCompile Include="Bounding.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Explodable.cpp" />
+    <ClCompile Include="Files.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameTime.cpp" />
+    <ClCompile Include="GeometryProvider.cpp" />
+    <ClCompile Include="glError.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="Scoreboard.cpp" />
+    <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="ThirdParty\src\gl_core_4_3.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Vectors.cpp" />
+    <ClCompile Include="WorldEntity.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="AsteroidManager.h" />
+    <ClInclude Include="AsteroidsGame.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="Explodable.h" />
+    <ClInclude Include="Files.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameTime.h" />
+    <ClInclude Include="GeometryProvider.h" />
+    <ClInclude Include="glError.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="Bounding.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Missile.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scoreboard.h" />
+    <ClInclude Include="Ship.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Vectors.h" />
+    <ClInclude Include="WorldEntity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\primitive.frag.glsl" />
+    <None Include="Shaders\primitive.geom.glsl" />
+    <None Include="Shaders\primitive.vert.glsl" />
+    <None Include="Shaders\simple.frag.glsl" />
+    <None Include="Shaders\simple.geom.glsl" />
+    <None Include="Shaders\simple.vert.glsl" />
+    <None Include="Shaders\text.frag.glsl" />
+    <None Include="Shaders\text.geom.glsl" />
+    <None Include="Shaders\text.vert.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\courier_sdf.png" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D88ACA45-DD91-4D3B-A54F-9AFE5A4E35EC}</ProjectGuid>
+    <RootNamespace>Template</RootNamespace>
+    <ProjectName>GameEngine</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)ThirdParty\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)ThirdParty\lib\win;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)ThirdParty\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)ThirdParty\lib\win;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Sol\Documents\delete\engine\engine\GameEngine\ThirdParty\soil;C:\Users\Sol\Documents\Visual Studio 2015\Projects\engine\GameEngine\ThirdParty\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>
+      </EnableParallelCodeGeneration>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glfw3dll.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Sol\Documents\delete\engine\engine\GameEngine\ThirdParty\soil;C:\Users\Sol\Documents\Visual Studio 2015\Projects\engine\GameEngine\ThirdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Sol\Documents\delete\engine\engine\GameEngine\ThirdParty\soil;C:\Users\Sol\Documents\Visual Studio 2015\Projects\engine\GameEngine\ThirdParty\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>
+      </EnableParallelCodeGeneration>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glfw3dll.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Sol\Documents\delete\engine\engine\GameEngine\ThirdParty\soil;C:\Users\Sol\Documents\Visual Studio 2015\Projects\engine\GameEngine\ThirdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
