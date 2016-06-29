@@ -55,7 +55,7 @@ bool AsteroidsGame::OnCreateScene()
 
 	m_missileDebug = 0;
 
-	//m_scoreboard = &Create<Scoreboard>("scoreboard");
+	m_scoreboard = &Create<Scoreboard>("scoreboard");
 
     return true;
 }

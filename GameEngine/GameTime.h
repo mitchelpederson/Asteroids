@@ -17,6 +17,7 @@ public:
 	const float prevElapsedSeconds() const { return m_prevElapsedSeconds; }
 	const float TotalSeconds() const { return m_totalSeconds; }
 	const float timeScale() const { return m_timeScale; }
+	float MinFPS() const { return m_minFPS; }
 
 	const GameTime& Update();
 
@@ -42,6 +43,7 @@ private:
 	unsigned int m_elapsedTimeIndex;
 	unsigned int m_frameNumber;
 	float m_framesPerSecond;
+	float m_minFPS;
 
 	std::array<float, 10> m_elapsedTimeHistory;
 	float m_elapsedTimeHistoryTotal;

@@ -16,6 +16,7 @@ GameTime::GameTime()
 	m_elapsedTimeHistoryTotal = 0.0f;
 
 	m_framesPerSecond = 0.0f;
+	m_minFPS = 9999.0f;
 
 	clear(m_elapsedTimeHistory, 0.0f);
 }
@@ -44,6 +45,9 @@ const GameTime& GameTime::Update()
 	if (m_elapsedTimeIndex == 0)
 	{
 		m_framesPerSecond = m_elapsedTimeHistory.size() / m_elapsedTimeHistoryTotal;
+		if (m_framesPerSecond < m_minFPS)
+			m_minFPS = m_framesPerSecond;
+		
 	}
 
 	m_frameNumber++;

@@ -31,7 +31,7 @@ void Mesh::OnRender(const GameTime& time)
 
 	Material->Bind();
 
-	check_gl_error();	// ERROR
+	check_gl_error();
 
 	Material->SetUniforms(time);
 
@@ -81,21 +81,21 @@ void Mesh::OnRender(const GameTime& time)
 		// get the attribute location of Position (vertex) from the compiled shader
 		auto location = gl::GetAttribLocation(Material->Program(), "Character");
 
-		check_gl_error();		// ERROR
+		check_gl_error();		
 
 		/// enable position - really useful when we have a lot of vertex attributes and want to disable some of them
 		gl::EnableVertexAttribArray(location);
 
 		check_gl_error();
 
-		gl::VertexAttribPointer(location, m_glSize, gl::INT, false, 0, nullptr);
+		gl::VertexAttribIPointer(location, m_glSize, gl::INT, 0, nullptr);
 
 		check_gl_error();
 
 		gl::DrawArrays((GLenum)Type, 0, (GLuint) m_vertexCount);
 	}
 
-	
+	gl::BindVertexArray(0);
 
     /// unbind the program
     gl::UseProgram(0);
@@ -103,6 +103,52 @@ void Mesh::OnRender(const GameTime& time)
     check_gl_error();
 }
 
+
+void Mesh::SetTextData(std::vector<int> data) {
+
+	check_gl_error();
+
+	gl::BindVertexArray(m_vao);
+	check_gl_error();
+
+	//gl::DeleteBuffers(1, &m_vertexBuffer);
+
+	check_gl_error();
+
+	/// bind the buffer, so that subsequent buffer operations affect this object.
+	gl::BindBuffer((GLenum)BufferTarget::ArrayBuffer, m_vertexBuffer);
+
+	check_gl_error();
+
+	Log::Info << data.data()[0] << std::endl;
+
+	/// number of bytes that our vertex collection occupies
+	size_t vertexBufferSize = data.size() * sizeof(data[0]);
+	m_vertexCount = data.size();
+
+	/// copy the buffer data to the GPU's memory
+	gl::BufferData(
+		/// what kind of buffer is this - ArrayBuffer, Element Array Buffer
+		(GLenum)BufferTarget::ArrayBuffer
+		/// number of bytes we're sending to OpenGL
+		, vertexBufferSize
+		/// Host pointer to data to copy
+		, data.data()
+		/// how this buffer will be used - see OpenGL docs
+		, (GLenum)BufferUsageHint::StaticDraw
+		);
+
+	check_gl_error();
+
+	/// unbind the vertex buffer
+	gl::BindBuffer((GLenum)BufferTarget::ArrayBuffer, 0);
+
+	/// make sure there aren't any pending OpenGL errors
+	check_gl_error();
+
+	gl::BindVertexArray(0);
+
+}
 
 
 

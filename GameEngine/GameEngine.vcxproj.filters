@@ -231,5 +231,8 @@
     <Image Include="Images\courier_sdf.png">
       <Filter>Images</Filter>
     </Image>
+    <Image Include="Images\qs-temp.jpg">
+      <Filter>Images</Filter>
+    </Image>
   </ItemGroup>
 </Project>
