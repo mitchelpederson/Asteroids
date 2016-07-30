@@ -62,6 +62,7 @@ bool Ship::OnInitialize()
 	explosionLength = 2.0f;
 	
 	m_playerLives = 3;
+	m_playerScore = 0;
 
     return material.Build("Shaders/primitive");
 
@@ -141,4 +142,12 @@ void Ship::onExplodeFinish() {
 
 int Ship::getLives() {
 	return m_playerLives;
+}
+
+int Ship::getScore() {
+	return m_playerScore;
+}
+
+void Ship::addScore(int score) {
+	m_playerScore += score;
 }

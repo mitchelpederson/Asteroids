@@ -73,17 +73,17 @@ bool Text::OnInitialize() {
 	TextureSize = Vector2((float) fontTextureWidth, (float) fontTextureHeight);
 	//TextureSize = Vector2(512.0f, 256.0f);
 	
+	Data = "test";
 	return GameObject::OnInitialize();
 }
 
+
 void Text::OnUpdate(const GameTime& time) {
 
-	string str = "This is a much longer text string to test performance of the geometry shader text thing This is a much longer text string to test performance of the geometry shader text thing This is a much longer text string to test performance of the geometry shader text thingThis is a much longer text string to test performance of the geometry shader text thing This is a much longer text string to test performance of the geometry shader text thing This is a much longer text string to test performance of the geometry shader text thing";
-	//string str = "short";
 	vector<int> data;
 
-	for (int i = 0; i < str.size(); i++) {
-		data.push_back((int)str[i]);
+	for (int i = 0; i < Data.size(); i++) {
+		data.push_back((int)Data[i]);
 	}
 
 	m_mesh->SetTextData(data);
@@ -91,6 +91,7 @@ void Text::OnUpdate(const GameTime& time) {
 	GameObject::OnUpdate(time);
 
 }
+
 
 void Text::OnRender(const GameTime& time) {
 

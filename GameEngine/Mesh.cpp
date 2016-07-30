@@ -37,7 +37,7 @@ void Mesh::OnRender(const GameTime& time)
 
 	check_gl_error();
     
-    gl::PolygonMode(gl::FRONT_AND_BACK, gl::FILL);
+    gl::PolygonMode(gl::FRONT_AND_BACK, (GLenum)Material->FillType);
 
 	check_gl_error();		
 
@@ -119,8 +119,6 @@ void Mesh::SetTextData(std::vector<int> data) {
 	gl::BindBuffer((GLenum)BufferTarget::ArrayBuffer, m_vertexBuffer);
 
 	check_gl_error();
-
-	Log::Info << data.data()[0] << std::endl;
 
 	/// number of bytes that our vertex collection occupies
 	size_t vertexBufferSize = data.size() * sizeof(data[0]);

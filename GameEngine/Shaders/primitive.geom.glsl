@@ -72,7 +72,7 @@ void main() {
 
 	EndPrimitive();
 
-	if (explosionFactor > 0) {
+	/*if (explosionFactor > 0) {
 
 		for (int i = 0; i < v.length(); i++) {
 
@@ -108,5 +108,5 @@ void main() {
 
 		EndPrimitive();
 	
-	}
+	}*/
 }

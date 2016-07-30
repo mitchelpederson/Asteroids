@@ -36,9 +36,6 @@ void main(void)
 
 	vec2 cell = vec2(character % FontLayout.x, character / FontLayout.x);
 
-	//vec2 texNW = vec2((character % FontLayout.x) * (TexelSize.x * 32), (floor(character % FontLayout.y)) * (TexelSize.y * 32));
-	//vec2 texSE = vec2(1);
-
 	vec2 texNW = cell * glyphSize + TexelSize;
 	vec2 texSE = texNW + glyphSize - TexelSize;
 

@@ -32,6 +32,8 @@ public:
 	void onExplodeFinish();
 
 	int getLives();
+	int getScore();
+	void addScore(int score);
 
 private:
     Mesh* m_mesh;
@@ -40,6 +42,7 @@ private:
 
 	Vector4 m_meshColor;
 	int m_playerLives;
+	int m_playerScore;
 	
 	void checkInput(const GameTime& time);
     

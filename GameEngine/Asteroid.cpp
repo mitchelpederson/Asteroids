@@ -27,8 +27,10 @@ bool Asteroid::OnInitialize()
 	vector<Vector3> vertices;
 	vector<GLushort> indices;
 
-	GeometryProvider::Icosahedron(vertices, indices);
-	GeometryProvider::RandomizeVertices(vertices);
+	//GeometryProvider::Icosahedron(vertices, indices);
+	//GeometryProvider::RandomizeVertices(vertices);
+
+	GeometryProvider::Superformula3D(vertices, indices);
 
 	mesh.Initialize(vertices, indices);
 
@@ -42,19 +44,22 @@ bool Asteroid::OnInitialize()
 
 	drag = 0.00f;
 
-	Transform.Scale = Transform.Scale * ((rand() % 101 / 100.f) + 1.5);
+	//Transform.Scale = Transform.Scale * ((rand() % 101 / 100.f) + 1.5);
+	Transform.Scale = Transform.Scale * 4.f;
 	bounds.setBounds(Transform.Translation, 0.85f * Transform.Scale.X);
 
-	//pushTranslation(1.0f, 1.0f, 0.0f, Game::Instance().Time);
+	pushTranslation(1.0f, 1.0f, 0.0f, Game::Instance().Time);
 
 	m_meshColor.X = 0.0f; m_meshColor.Y = 1.0f, m_meshColor.Z = 1.0f, m_meshColor.W = 1.0f;
 
 	explosionSpeed = 1.5f;
 	explosionLength = 3.0f;
 
+	m_value = 100;
 
+
+	//return material.Build("Shaders/primitive");
 	return material.Build("Shaders/primitive");
-
 
 }
 
@@ -121,7 +126,7 @@ void Asteroid::resetSize() {
 void Asteroid::spawn(const GameTime& time) {
 
 	// Get a random position for the Asteroid. If it is too close to the center of the screen, move it away.
-	Transform.Translation.X += (float)(rand() % 140 / 10.f) - 7.0f;
+	Transform.Translation.X = (float)(rand() % 300 / 10.f) - 15.0f;
 	
 	if (Transform.Translation.X < 5.0f && Transform.Translation.X >= 0.0f) {
 		Transform.Translation.X += 4.0f;
@@ -131,7 +136,7 @@ void Asteroid::spawn(const GameTime& time) {
 	}
 
 	// Repeat for Y position
-	Transform.Translation.Y += (float)(rand() % 100 / 10.f) - 5.f;
+	Transform.Translation.Y = (float)(rand() % 200 / 10.f) - 10.f;
 
 	if (Transform.Translation.Y < 5.0f && Transform.Translation.Y >= 0.0f) {
 		Transform.Translation.Y += 4.0f;
@@ -142,7 +147,7 @@ void Asteroid::spawn(const GameTime& time) {
 
 	prevTransform.Translation = Transform.Translation;
 
-	pushTranslation(((rand() % 101) - 50.f) / 4.f, ((rand() % 101) - 50.f) / 4.f, 0.0f, time);
+	//pushTranslation(((rand() % 101) - 50.f) / 4.f, ((rand() % 101) - 50.f) / 4.f, 0.0f, time);
 
 	activate(time);
 }
@@ -176,4 +181,8 @@ void Asteroid::onExplodeFinish() {
 
 int Asteroid::getLevel() {
 	return m_size;
+}
+
+int Asteroid::getValue() {
+	return m_value;
 }

@@ -85,6 +85,7 @@ struct Vector3 : public Vector2
 	}
 
 	Vector3 normalize();
+	float length();
 };
 
 struct Vector4 : public Vector3
