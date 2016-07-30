@@ -17,10 +17,9 @@ public:
 
 	bool OnInitialize() override;
 
-	void addPoints(int score);
-	void setLives(int lives);
-
 	void getScore();
+
+	void UpdateScoreboard(int score, int lives);
 
 private:
 

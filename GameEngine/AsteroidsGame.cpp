@@ -55,7 +55,7 @@ bool AsteroidsGame::OnCreateScene()
 
 	m_missileDebug = 0;
 
-	//m_scoreboard = &Create<Scoreboard>("scoreboard");
+	m_scoreboard = &Create<Scoreboard>("scoreboard");
 
     return true;
 }
@@ -101,6 +101,8 @@ void AsteroidsGame::OnUpdate(const GameTime& time)
 	if (m_ship->getLives() < 0) {
 		
 	}
+
+	m_scoreboard->UpdateScoreboard(m_ship->getScore(), m_ship->getLives());
 }
 
 void AsteroidsGame::collisionDetection(const GameTime& time) {
@@ -115,30 +117,24 @@ void AsteroidsGame::collisionDetection(const GameTime& time) {
 			if (asteroids[i]->bounds.intersects(m_ship->bounds)) {
 				if (!m_ship->isExploding() && !asteroids[i]->isExploding()) {
 					m_ship->explode();
-					//m_scoreboard->setLives(m_ship->getLives() - 1);
-				}
-
-				//m_ship->sendToOrigin();
+				}				
 			}
 
 				// Now check if any missiles have hit the asteroids.
 			for (int j = 0; j < m_missiles.size(); j++) {
 
 				// If the missile is active AND the missile is intersecting the asteroid
-				if (m_missiles[j]->isActive() && asteroids[i]->bounds.intersects(m_missiles[j]->bounds)) {
-				
-					if (!asteroids[i]->isExploding()) {
-
-						//m_scoreboard->addPoints(100);
-
-						m_missiles[j]->Deactivate();
-						asteroids[i]->explode();
-
-						if (asteroids[i]->getLevel() > 0) {
-							m_asteroids->split(time, i, m_missiles[j]->Transform.Translation);
-						}
+				if (m_missiles[j]->isActive() && !asteroids[i]->isExploding() && asteroids[i]->bounds.intersects(m_missiles[j]->bounds)) {
 						
+					m_ship->addScore(asteroids[i]->getValue());		// Add points
+					m_missiles[j]->Deactivate();					// Deactivate missile
+					asteroids[i]->explode();						// Explode asteroid
+
+					if (asteroids[i]->getLevel() > 0) {
+						m_asteroids->split(time, i, m_missiles[j]->Transform.Translation);
 					}
+						
+					
 				}
 			}
 		}

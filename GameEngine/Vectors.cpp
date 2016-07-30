@@ -16,3 +16,7 @@ Vector3 Vector3::normalize() {
 	return Vector3(X / length, Y / length, Z / length);
 
 }
+
+float Vector3::length() {
+	return sqrt((X * X) + (Y * Y) + (Z * Z));
+}

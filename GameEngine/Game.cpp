@@ -134,7 +134,7 @@ bool Game::Run()
         /* Swap front and back buffers */
         glfwSwapBuffers(m_window);
         
-        auto title = "Time: " + std::to_string(time.TotalSeconds()) + " FPS: " + std::to_string(time.FramesPerSecond());
+        auto title = "Time: " + std::to_string(time.TotalSeconds()) + " FPS: " + std::to_string(time.FramesPerSecond()) + " Min FPS: " + std::to_string(time.MinFPS());
         
         glfwSetWindowTitle(m_window, title.c_str());
                            

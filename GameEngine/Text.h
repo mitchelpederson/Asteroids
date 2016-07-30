@@ -19,11 +19,11 @@ public:
 	Vector2 TextureSize;
 	Vector2 CellSize;
 	Vector3 RenderPosition;
-	float FontSize = 100.f;
+	float FontSize = 10.f;
 
 
 	//std::queue<std::string> Strings;
-	std::string Data;
+	std::string Data = "TEST";
 
 	Text() : GameObject() {}
 
@@ -32,8 +32,8 @@ public:
 	void OnUpdate(const GameTime& time) override;
 
 private:
-	int m_fontTextureWidth = 0;
-	int m_fontTextureHeight = 0;
+	int m_fontTextureWidth;
+	int m_fontTextureHeight;
 
 	Mesh* m_mesh;
 	Material* m_material;

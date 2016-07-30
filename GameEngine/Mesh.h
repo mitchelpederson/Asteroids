@@ -107,18 +107,27 @@ public:
 		check_gl_error();
 
 		gl::GenVertexArrays(1, &m_vao);
+
+		check_gl_error();
+
 		gl::BindVertexArray(m_vao);
+
 		check_gl_error();
 
 		/// create a GL buffer for the vertices
 		gl::GenBuffers(1, &m_vertexBuffer);
 
+		check_gl_error();
+
 		/// bind the buffer, so that subsequent buffer operations affect this object.
 		gl::BindBuffer((GLenum)BufferTarget::ArrayBuffer, m_vertexBuffer);
+
+		check_gl_error();
 
 		/// number of bytes that our vertex collection occupies
 		size_t vertexBufferSize = vertices.size() * sizeof(vertices[0]);
 		m_vertexCount = vertices.size();
+
 
 		/// copy the buffer data to the GPU's memory
 		gl::BufferData(
@@ -129,8 +138,10 @@ public:
 			/// Host pointer to data to copy
 			, vertices.data()
 			/// how this buffer will be used - see OpenGL docs
-			, (GLenum)BufferUsageHint::DynamicDraw
+			, (GLenum)BufferUsageHint::StaticDraw
 			);
+
+		check_gl_error();
 
 		/// unbind the vertex buffer
 		gl::BindBuffer((GLenum)BufferTarget::ArrayBuffer, 0);
@@ -139,51 +150,14 @@ public:
 		check_gl_error();
 
 		gl::BindVertexArray(0);
+
+		check_gl_error();
 
 		m_indexCount = 0;
 		m_glSize = 1;
 
 	}
-    
-	void SetTextData(std::vector<GLuint> data) {
-
-		check_gl_error();
-
-		gl::BindVertexArray(m_vao);
-		check_gl_error();
-
-		/// bind the buffer, so that subsequent buffer operations affect this object.
-		gl::BindBuffer((GLenum)BufferTarget::ArrayBuffer, m_vertexBuffer);
-
-		check_gl_error();
-
-		/// number of bytes that our vertex collection occupies
-		size_t vertexBufferSize = data.size() * sizeof(data[0]);
-		m_vertexCount = data.size();
-
-		/// copy the buffer data to the GPU's memory
-		gl::BufferData(
-			/// what kind of buffer is this - ArrayBuffer, Element Array Buffer
-			(GLenum)BufferTarget::ArrayBuffer
-			/// number of bytes we're sending to OpenGL
-			, vertexBufferSize
-			/// Host pointer to data to copy
-			, data.data()
-			/// how this buffer will be used - see OpenGL docs
-			, (GLenum)BufferUsageHint::DynamicDraw
-			);
-
-		check_gl_error();
-
-		/// unbind the vertex buffer
-		gl::BindBuffer((GLenum)BufferTarget::ArrayBuffer, 0);
-
-		/// make sure there aren't any pending OpenGL errors
-		check_gl_error();
-
-		gl::BindVertexArray(0);
-
-	}
+	void SetTextData(std::vector<int> data);
 
 
     void OnRender(const GameTime& time) override;

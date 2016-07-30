@@ -42,6 +42,7 @@ public:
 	void resetSize();
 
 	int getLevel();
+	int getValue();
 
 	void setColor(float, float, float, float);
 
@@ -55,6 +56,7 @@ private:
 	bool m_isActive;
 
 	int m_size;
+	int m_value;
 
 };
 

@@ -19,6 +19,9 @@ public:
 
 	static void GenerateNoise(std::vector<float>& noise, int amount);
 
+	static void Superformula3D(std::vector<Vector3>& vertices, std::vector<GLushort>& indices);
+	static float SuperformulaRadius(float angle, float a, float b, float m1, float m2, float n1, float n2, float n3);
+
 };
 
 #endif

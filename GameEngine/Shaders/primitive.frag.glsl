@@ -16,6 +16,9 @@ in VertexData {
 
 void main() {
 
+	//fragmentColor = vec4(1,0,1,1);
+	//return;
+
 	vec4 lightDir = normalize(vec4(0, 1, -1.0, 1));
 	vec3 normal = normalize(cross(dFdx(VertexOut.Position.xyz), dFdy(VertexOut.Position.xyz)));
 

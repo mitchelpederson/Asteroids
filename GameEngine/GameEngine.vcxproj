@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\courier_sdf.png" />
+    <Image Include="Images\qs-temp.jpg" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D88ACA45-DD91-4D3B-A54F-9AFE5A4E35EC}</ProjectGuid>
